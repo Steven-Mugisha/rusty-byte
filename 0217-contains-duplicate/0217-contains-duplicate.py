@@ -1,19 +1,17 @@
 class Solution:
     def containsDuplicate(self, nums: List[int]) -> bool:
 
-        MapSet = set()
+        Mapset = set()
         
         for i in nums:
-
-            if i in MapSet:
+            if i in Mapset:
                 return True
-
-            MapSet.add(i)
+            Mapset.add(i)
         
-        return False 
+        return False
 
-        
 
+    
  
 
         

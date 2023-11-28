@@ -11,12 +11,12 @@ class Solution:
 
         def traverse(current_node):
             results.append(current_node.val)
-            if current_node.left is not None:
+            if current_node.left:
                 traverse(current_node.left)
-            if current_node.right is not None:
+            if current_node.right:
                 traverse(current_node.right)
 
-        if root is not None:
+        if root:
             traverse(root)
         return results
 

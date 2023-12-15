@@ -10,7 +10,8 @@ class Solution:
 
                 for r in range(row-1, row+2):
                     for c in range(col-1, col+2):
-                        if r >= 0 and r < rows and c >=0 and c < cols:
+                        # if r >= 0 and r < rows and c >=0 and c < cols:
+                        if 0 <= r < rows and 0 <= c < cols:
                             total_sum += img[r][c]
                             count += 1
                 if count > 0:

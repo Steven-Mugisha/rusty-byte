@@ -2,7 +2,7 @@ class Solution:
     def imageSmoother(self, img: List[List[int]]) -> List[List[int]]:
 
         rows, cols = len(img), len(img[0])
-        res = [[0]*cols for _ in range(rows)]
+        res = [[None]*cols for _ in range(rows)]
 
         for row in range (rows):
             for col in range(cols):

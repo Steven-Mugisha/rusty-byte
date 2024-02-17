@@ -1,15 +1,14 @@
 class Solution:
     def getRow(self, rowIndex: int) -> List[int]:
 
-        rows = [[1]]
+        res = [1]
 
         for i in range(rowIndex):
-            curr = [0] + rows[-1] + [0]
-            new_row = []
-            for j in range(len(curr) -1):
-                sum_val = curr[j] + curr[j+1]
-                new_row.append(sum_val)
-            rows.append(new_row)
+            next_row = [0]* (len(res) + 1)
+            for j in range(len(res)):
+                next_row[j] += res[j]
+                next_row[j+1] += res[j]
+            res = next_row
         
-        return rows[-1]
-        
+        return res
+

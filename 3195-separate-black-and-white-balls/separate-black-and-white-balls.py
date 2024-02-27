@@ -1,13 +1,13 @@
 class Solution:
     def minimumSteps(self, s: str) -> int:
-        j = 0
-        c = 0
+        ones, total = 0, 0
         for i in range(len(s)):
-            if s[i] == '0':
-                c += i - j
-                j += 1
-        return c
-
+            if s[i] == '1':
+                ones += 1
+            
+            else:
+                total += ones
+        return total 
 
         
         

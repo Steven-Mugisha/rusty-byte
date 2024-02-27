@@ -7,7 +7,6 @@ class Solution:
             
             else:
                 total += ones
+        
         return total 
 
-        
-        

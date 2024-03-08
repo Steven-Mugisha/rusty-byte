@@ -9,26 +9,40 @@ class Solution:
         # append to res arr and then return.
 
         # create the map for to keep nums2 values:
+
         Map = {}
 
-        for idx, val in enumerate(nums2):
+        for idx, val in enumerate(nums1):
             Map[val] = idx
 
         res = [-1]*len(nums1)
+        stack = []
 
-        for i in range(len(nums1)):
-            val = nums1[i]
-            if val in Map:
-                idx = Map[val]
-                for j in range(idx + 1, len(nums2)):
-                    if nums2[j] > val:
-                        res[i] = nums2[j]
-                        break
-                    
-                    else:
-                        continue
-        
+        # Input: nums1 = [4,1,2], nums2 = [1,3,4,2]
+        for i in range(len(nums2)):
+            curr = nums2[i]
+            while stack and stack[-1] < curr:
+                val = stack.pop()
+                index = Map[val]
+                res[index] = curr
+            
+            if curr in Map:
+                stack.append(curr)
+
         return res
+        # for i in range(len(nums1)):
+        #     val = nums1[i]
+        #     if val in Map:
+        #         idx = Map[val]
+        #         for j in range(idx + 1, len(nums2)):
+        #             if nums2[j] > val:
+        #                 res[i] = nums2[j]
+        #                 break
+                    
+        #             else:
+        #                 continue
+        
+        # return res
 
         
 

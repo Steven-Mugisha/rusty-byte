@@ -9,6 +9,8 @@ class Solution:
                 hashSet.remove(s[l])
                 l += 1
             hashSet.add(s[i])
-            res = max(res, i - l + 1)
+            # res = max(res, i - l + 1)
+            res = max(res, len(hashSet))
 
-        return res 
+
+        return res

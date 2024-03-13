@@ -7,11 +7,8 @@ class Solution:
         for i in range(width, len(nums)):
             # curr_zeros -= (nums[i - width] == 0)
             # curr_zeros += (nums[i] == 0)
-
             curr_zeros += nums[i - width]
             curr_zeros -= nums[i]
-
-
             res = min(res, curr_zeros)
         
         return res

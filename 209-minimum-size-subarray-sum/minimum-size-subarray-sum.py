@@ -10,7 +10,5 @@ class Solution:
                 min_len = min(min_len, r - l + 1)
                 curr_sum -= nums[l]
                 l += 1
-            # curr_sum += nums[r]
-        
         return min_len if min_len != math.inf else 0
             

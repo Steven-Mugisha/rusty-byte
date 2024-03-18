@@ -1,16 +1,14 @@
 class Solution:
     def minSwaps(self, nums: List[int]) -> int:
-        width = sum(nums)
+        ones = sum(nums)
         nums += nums
-        curr_zeros = len(nums[:width]) - sum(nums[:width])
-        res = curr_zeros
-        for i in range(width, len(nums)):
-            # curr_zeros -= (nums[i - width] == 0)
-            # curr_zeros += (nums[i] == 0)
-            curr_zeros += nums[i - width]
-            curr_zeros -= nums[i]
-            res = min(res, curr_zeros)
+        zeros = ones - sum(nums[:ones])
+        n_swaps = zeros
         
-        return res
-            
+        for i in range(ones, len(nums)):
+            zeros += nums[i - ones]
+            zeros -= nums[i]
+            n_swaps = min(n_swaps, zeros)
+        
+        return n_swaps
 

@@ -6,8 +6,8 @@ class Solution:
         ans = math.inf
 
         for r in range(width, len(nums)):
-            zeros += nums[r- width]
-            zeros -= nums[r]
+            zeros += (nums[r] == 0)
+            zeros -= (nums[r - width] == 0)
             ans = min(ans, zeros)
         
         return ans

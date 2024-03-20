@@ -3,10 +3,11 @@ class Solution:
         width = sum(nums)
         nums += nums
         zeros = width - sum(nums[:width])
-        swaps = zeros
+        no_swaps = zeros
+
         for i in range(width, len(nums)):
             zeros += (nums[i] == 0)
-            zeros -= (nums[i-width] == 0)
-            swaps = min(swaps, zeros)
+            zeros -= (nums[i - width] == 0)
+            no_swaps = min(no_swaps, zeros)
         
-        return swaps
+        return no_swaps

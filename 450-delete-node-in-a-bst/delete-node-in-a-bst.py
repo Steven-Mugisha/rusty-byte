@@ -32,7 +32,6 @@ class Solution:
             root.val = small_node.val
             root.right = self.deleteNode(root.right, small_node.val)
 
-        
         return root
     
     def traverse_helper(self, node):

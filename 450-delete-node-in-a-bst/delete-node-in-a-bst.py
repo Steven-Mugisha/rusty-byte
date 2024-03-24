@@ -17,7 +17,7 @@ class Solution:
         elif root.val > key:
             root.left = self.deleteNode(root.left, key)
         
-        elif root.val == key:
+        else:
             if not root.left and not root.right:
                 return None
 

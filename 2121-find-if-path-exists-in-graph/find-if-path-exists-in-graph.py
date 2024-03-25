@@ -1,24 +1,28 @@
 class Solution:
     def validPath(self, n: int, edges: List[List[int]], source: int, destination: int) -> bool:
 
-        my_graph = defaultdict(list)
-        for edge in edges:
-            u, v = edge
-            my_graph[u].append(v)
-            my_graph[v].append(u) 
+        graph = defaultdict(list)
+
+        for v,e in edges:
+            graph[v].append(e)
+            graph[e].append(v)
         
+        seen = set()
+        queue = []
         queue = [source]
-        visited = set()
 
         while queue:
-            curr_vertex = queue.pop(0)
-            if curr_vertex == destination:
+            curr_v = queue.pop(0)
+            if curr_v == destination:
                 return True
             
-            if curr_vertex not in visited:
-                visited.add(curr_vertex)
-                for neighbor in my_graph[curr_vertex]:
-                    queue.append(neighbor)
-        
+            if curr_v not in seen:
+                seen.add(curr_v)
+                for neighbour in graph[curr_v]:
+                    queue.append(neighbour)
+
         return False
-        
+            
+
+
+

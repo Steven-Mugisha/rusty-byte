@@ -9,7 +9,7 @@ class Solution:
         
         seen = set()
         queue = []
-        queue = [source]
+        queue.append(source)
 
         while queue:
             curr_v = queue.pop(0)
@@ -18,8 +18,8 @@ class Solution:
             
             if curr_v not in seen:
                 seen.add(curr_v)
-                for neighbour in graph[curr_v]:
-                    queue.append(neighbour)
+                for e in graph[curr_v]:
+                    queue.append(e)
 
         return False
             

@@ -1,5 +1,6 @@
 class Solution:
     def validPath(self, n: int, edges: List[List[int]], source: int, destination: int) -> bool:
+
         graph = defaultdict(list)
 
         for v,e in edges:
@@ -18,5 +19,5 @@ class Solution:
                 seen.add(curr_v)
                 for neighbour in graph[curr_v]:
                     queue.append(neighbour)
-
+        
         return False

@@ -9,9 +9,9 @@ class Solution:
         for trusts, trusted in trust:
             indegree[trusted] += 1
             outdegree[trusts] += 1
+
+        for k,v in indegree.items():
+            if v == n - 1 and outdegree[k] == 0:
+                return k
         
-        for v,k in indegree.items():
-            if k == n-1 and outdegree[v] == 0:
-                return v
-            
         return -1 

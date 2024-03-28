@@ -1,16 +1,16 @@
 class Solution:
     def maxProfit(self, prices: List[int]) -> int:
-        i,j = 0, 1
+        buy, sell = prices[0], 0
         Profit = 0
 
-        while j < len(prices):
-            if prices[i] < prices[j]:
-                cur_profit = prices[j] - prices[i]
-                Profit = max(Profit, cur_profit)
-            
-            else:
-                i = j
-            j += 1
+        while sell < len(prices):
+            buy = min(buy, prices[sell])
+            Profit = max(Profit, prices[sell] - buy)
+            sell += 1
+        
         return Profit
 
 
+
+
+        

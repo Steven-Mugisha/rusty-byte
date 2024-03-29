@@ -1,12 +1,11 @@
 class Solution:
     def validPath(self, n: int, edges: List[List[int]], source: int, destination: int) -> bool:
-
         graph = defaultdict(list)
 
-        for v,e in edges:
-            graph[v].append(e)
-            graph[e].append(v)
-        
+        for u, v in edges:
+            graph[u].append(v)
+            graph[v].append(u)
+
         queue, seen = [], set()
         queue = [source]
 
@@ -21,3 +20,7 @@ class Solution:
                     queue.append(neighbour)
         
         return False
+
+
+
+

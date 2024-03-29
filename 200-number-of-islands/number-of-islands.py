@@ -2,21 +2,21 @@ class Solution:
     def numIslands(self, grid: List[List[str]]) -> int:
         if len(grid) == 0:
             return 0
-        
+
         rows, cols = len(grid), len(grid[0])
-        seen = set()
-        island = 0
+
+        seen, island = set(), 0
 
         def bfs(r, c):
             queue = collections.deque()
-            queue.append((r, c))
+            queue.append((r,c))
             seen.add((r,c))
 
             while queue:
                 row, col = queue.popleft()
-                directions = [[1,0], [-1, 0], [0, 1], [0, -1]]
+                directions = [[1, 0], [-1, 0], [0, 1], [0, -1]]
 
-                for dr, dc in directions:
+                for dr , dc in directions:
                     r, c = dr + row, dc + col
                     if (r in range(rows) and
                     c in range(cols) and
@@ -24,12 +24,11 @@ class Solution:
                     grid[r][c] == '1'):
                         queue.append((r,c))
                         seen.add((r,c))
-
-
+                        
         for r in range(rows):
             for c in range(cols):
-                if grid[r][c] == '1' and (r, c) not in seen:
-                    bfs(r,c)
+                if grid[r][c] == '1' and (r,c) not in seen:
+                    bfs(r, c)
                     island += 1
         
-        return island
+        return island 

@@ -5,36 +5,30 @@ class Solution:
         
         rows, cols = len(grid), len(grid[0])
         island = 0
-        visited = set()
+        seen = set()
 
         def bfs(r,c):
             queue = collections.deque()
             queue.append((r,c))
-            visited.add((r,c))
+            seen.add((r, c))
 
             while queue:
                 row, col = queue.popleft()
-                directions = [
-                    [0,1], [0, -1],
-                    [1, 0], [-1, 0]
-                ]
+                directions = [[1, 0], [-1, 0], [0, 1], [0, -1]]
+                for dr, dc in directions:
+                    r, c = dr + row, dc + col
 
-                for r, c in directions:
-                    dr, dc = r + row, c + col
-                    if (dr in range(rows) and
-                    dc in range(cols) and 
-                    (dr, dc) not in visited and 
-                    grid[dr][dc] == "1"):
-                        queue.append((dr, dc))
-                        visited.add((dr,dc))
+                    if (r in range(rows) and
+                    c in range(cols) and 
+                    (r, c) not in seen and
+                    grid[r][c] == '1'):
+                        queue.append((r, c))
+                        seen.add((r,c))
 
         for r in range(rows):
             for c in range(cols):
-                if grid[r][c] == "1" and (r, c) not in visited:
-                    bfs(r, c)
+                if grid[r][c] == '1' and (r, c) not in seen:
+                    bfs(r,c)
                     island += 1
-            
-        
+    
         return island
-
-            

@@ -11,6 +11,4 @@ class Solution:
         return Profit
 
 
-
-
         

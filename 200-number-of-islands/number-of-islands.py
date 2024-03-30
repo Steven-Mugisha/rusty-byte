@@ -7,27 +7,28 @@ class Solution:
         seen = set()
         island = 0
 
-        def bfs(r ,c):
+        def bfs(r, c):
             queue = collections.deque()
-            queue.append((r, c))
+            queue.append((r,c))
             seen.add((r,c))
             
             while queue:
                 row, col = queue.popleft()
-                directions = [[1,0], [-1, 0], [0, 1], [0, -1]]
+                directions = [[1, 0], [-1, 0], [0, 1], [0, -1]]
 
                 for dr, dc in directions:
                     r, c = dr + row, dc + col
-                    if (r in range(rows) and c in range(cols) and
+                    if (
+                        r in range(rows) and c in range(cols) and 
                         (r, c) not in seen and grid[r][c] == '1'):
                         seen.add((r,c))
-                        queue.append((r,c))
+                        queue.append((r, c))
 
+       
         for r in range(rows):
             for c in range(cols):
                 if grid[r][c] == '1' and (r, c) not in seen:
-                    bfs(r ,c)
+                    bfs(r, c)
                     island += 1
         
-
         return island

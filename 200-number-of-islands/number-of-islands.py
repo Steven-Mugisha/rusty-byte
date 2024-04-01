@@ -8,7 +8,7 @@ class Solution:
         def bfs(r,c):
             queue = collections.deque()
             queue.append((r,c))
-            seen.add((r,c))
+            # seen.add((r,c))
 
             while queue:
                 row, col = queue.popleft()

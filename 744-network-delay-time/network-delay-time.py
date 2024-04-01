@@ -4,28 +4,30 @@ class Solution:
 
         graph = defaultdict(list)
 
-        for u, v, w in times:
-            graph[u].append((v, w))
+        for u,v,w in times:
+            graph[u].append((v,w))
+
+        pq = PriorityQueue()
+        pq.put((0,k))
+        seen = set()
 
         delay_times = 0
-        pq, seen = PriorityQueue(), set()
-        pq.put((0, k))
-        
+
         while not pq.empty():
-            time, node = pq.get()
-            
-            if node in seen:
+            time, v = pq.get()
+
+            if v in seen:
                 continue
             
-            seen.add(node)
             delay_times = max(delay_times, time)
-
-            neighbours = graph[node]
+            seen.add(v)
+        
+            neighbours = graph[v]
             for neighbour, t in neighbours:
                 if neighbour not in seen:
                     pq.put((t + time, neighbour))
 
         if len(seen) == n:
             return delay_times
-        
-        return -1 
+
+        return -1

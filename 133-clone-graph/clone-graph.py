@@ -9,11 +9,12 @@ class Node:
 from typing import Optional
 class Solution:
     def cloneGraph(self, node: Optional['Node']) -> Optional['Node']:
-        nodes_completed = {}        
+        nodes_completed = {}
 
         def dfs(node):
             if not node:
                 return None
+                
             cloned_node = Node(node.val)
             nodes_completed[node] = cloned_node
 
@@ -23,10 +24,8 @@ class Solution:
                     cloned_node.neighbors.append(dfs(nei))
                 else:
                     cloned_node.neighbors.append(curr_node)
-
+            
             return cloned_node
         
         return dfs(node)
-
-
-
+        

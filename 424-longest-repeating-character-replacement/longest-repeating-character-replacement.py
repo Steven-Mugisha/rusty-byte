@@ -14,7 +14,10 @@ class Solution:
             curr_max += 1
             counter[s[r]] += 1
 
+            print(f"first {curr_max - max(counter.values())}, last {min(counter.values())}")
+
             while curr_max - max(counter.values()) > k:
+
                 counter[s[l]] -= 1
                 curr_max -= 1
                 l += 1

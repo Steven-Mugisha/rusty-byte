@@ -1,20 +1,22 @@
+from collections import deque
 class Solution:
     def numIslands(self, grid: List[List[str]]) -> int:
         rows, cols = len(grid), len(grid[0])
-        seen, island = set(), 0
+        island = 0
+        seen = set()
 
-        def bfs(r, c):
-            q = collections.deque()
+        def bfs(r,c):
+            q = deque()
             q.append((r,c))
 
             while q:
                 row, col = q.popleft()
-                directions = [(1,0), (-1,0), (0,1), (0,-1)]
+                directions = [(1,0),(-1,0),(0,1),(0,-1)]
                 for dr, dc in directions:
                     r, c = dr + row, dc + col
                     if (
-                        r in range(rows) and c in range(cols) and 
-                        (r,c) not in seen and grid[r][c] == '1'
+                        r in range(rows) and c in range(cols) and
+                        grid[r][c] == '1' and (r,c) not in seen
                     ):
                         seen.add((r,c))
                         q.append((r,c))
@@ -26,4 +28,3 @@ class Solution:
                     island += 1
         
         return island
-

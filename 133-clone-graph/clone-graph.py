@@ -14,16 +14,15 @@ class Solution:
         def dfs(node):
             if node is None:
                 return None
-            copied_node = Node(node.val)
-            nodes_completed[node] = copied_node
-
+            cloned_node = Node(node.val)
+            nodes_completed[node] = cloned_node
             for nei in node.neighbors:
                 curr_node = nodes_completed.get(nei)
                 if not curr_node:
-                    copied_node.neighbors.append(dfs(nei))
+                    cloned_node.neighbors.append(dfs(nei))
                 else:
-                    copied_node.neighbors.append(curr_node)
+                    cloned_node.neighbors.append(curr_node)
             
-            return copied_node
-
+            return cloned_node
+        
         return dfs(node)

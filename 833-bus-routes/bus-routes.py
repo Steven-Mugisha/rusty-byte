@@ -18,11 +18,8 @@ class Solution:
             if station in connections:
                 for bus in connections[station]:
                     if bus not in seen:
+                        seen.add(bus)
                         for st in routes[bus]:
                             q.append([st, buses_taken + 1])
-                        seen.add(bus)
 
-        return -1
-
-
-
+        return - 1

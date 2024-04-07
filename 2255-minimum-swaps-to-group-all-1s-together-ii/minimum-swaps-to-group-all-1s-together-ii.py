@@ -2,12 +2,13 @@ class Solution:
     def minSwaps(self, nums: List[int]) -> int:
         width = sum(nums)
         nums += nums
-        zeros = width - sum(nums[:width])
-        ans = zeros
+        currZeros = width - sum(nums[:width])
+        res = currZeros
 
-        for i in range(width,len(nums)):
-            zeros += (nums[i] == 0)
-            zeros -= (nums[i - width] == 0)
-            ans = min(ans, zeros)
+        for i in range(width, len(nums)):
+            currZeros += (nums[i] == 0)
+            currZeros -= (nums[i- width] == 0)
 
-        return ans
+            res = min(res, currZeros)
+        
+        return res

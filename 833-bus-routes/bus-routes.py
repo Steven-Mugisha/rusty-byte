@@ -1,11 +1,11 @@
 class Solution:
     def numBusesToDestination(self, routes: List[List[int]], source: int, target: int) -> int:
-        connections = defaultdict(list)
 
+        connections = defaultdict(list)
         for bus, stations in enumerate(routes):
             for station in stations:
                 connections[station].append(bus)
-
+        
         q = deque()
         q.append([source, 0])
         seen = set()
@@ -21,5 +21,5 @@ class Solution:
                         seen.add(bus)
                         for st in routes[bus]:
                             q.append([st, buses_taken + 1])
-
-        return - 1
+        return -1
+                            

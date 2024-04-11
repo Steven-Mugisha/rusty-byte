@@ -28,11 +28,11 @@ class Solution:
             else:
                 root.val = self.find_min_val(root.right)
                 root.right = self.deleteNode(root.right, root.val)
+
         return root
     
     def find_min_val(self, root):
         while root.left:
-            root = root.left   
+            root = root.left
         return root.val
         
-

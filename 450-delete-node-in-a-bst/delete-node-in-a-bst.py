@@ -7,8 +7,7 @@
 
 class Solution:
     def deleteNode(self, root: Optional[TreeNode], key: int) -> Optional[TreeNode]:
-        root = self.__delete_node(root, key)
-        return root
+        return self.__delete_node(root, key)
     
     def __find_min(self, current_node):
         while current_node.left:

@@ -18,21 +18,21 @@ class Solution:
         else:
             if not root.left and not root.right:
                 return None
-            
+
             elif not root.left:
                 root = root.right
-            
+
             elif not root.right:
                 root = root.left
             
             else:
-                root.val = self.find_min_val(root.right)
-                root.right = self.deleteNode(root.right, root.val)
-
+                min_val = self.find_min(root.right)
+                root.val = min_val
+                root.right = self.deleteNode(root.right, min_val)
+        
         return root
     
-    def find_min_val(self, root):
+    def find_min(self, root):
         while root.left:
             root = root.left
         return root.val
-        

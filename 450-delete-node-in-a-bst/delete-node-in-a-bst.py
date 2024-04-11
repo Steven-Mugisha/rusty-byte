@@ -4,40 +4,41 @@
 #         self.val = val
 #         self.left = left
 #         self.right = right
+
 class Solution:
     def deleteNode(self, root: Optional[TreeNode], key: int) -> Optional[TreeNode]:
-        
-        if root is None:
-            return None
-        
-        # search the key from the tree:
-        if root.val < key:
-            root.right = self.deleteNode(root.right, key)
-        
-        elif root.val > key:
-            root.left = self.deleteNode(root.left, key)
-        
-        else:
-            if not root.left and not root.right:
-                return None
-
-            elif root.left is None:
-                return root.right
-            
-            elif root.right is None:
-                return root.left
-                
-            # choosing the right child
-            small_node = self.traverse_helper(root.right)
-            root.val = small_node.val
-            root.right = self.deleteNode(root.right, small_node.val)
-
+        root = self.__delete_node(root, key)
         return root
     
-    def traverse_helper(self, node):
-        while node.left:
-            node = node.left
-        return node
-    
-  
+    def __find_min(self, current_node):
+        while current_node.left:
+            current_node = current_node.left
         
+        return current_node.val
+
+    def __delete_node(self, current_node, key):
+        if current_node is None:
+            return None
+
+        if key < current_node.val:
+            current_node.left = self.__delete_node(current_node.left, key)
+
+        elif key > current_node.val:
+            current_node.right = self.__delete_node(current_node.right, key)
+
+        else:
+            if current_node.left is None and current_node.right is None:
+                return None
+
+            elif current_node.left is None:
+                current_node = current_node.right
+
+            elif current_node.right is None:
+                current_node = current_node.left
+
+            else:
+                sub_tree_min = self.__find_min(current_node.right)
+                current_node.val = sub_tree_min
+                current_node.right = self.__delete_node(current_node.right, sub_tree_min)
+
+        return current_node

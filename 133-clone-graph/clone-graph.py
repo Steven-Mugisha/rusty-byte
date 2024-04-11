@@ -9,25 +9,24 @@ class Node:
 from typing import Optional
 class Solution:
     def cloneGraph(self, node: Optional['Node']) -> Optional['Node']:
-        nodes_completed = {}
+        node_completed = {}
 
         def clone_helper(node):
-            if node is None:
+            if not node:
                 return None
             
             cloned_node = Node(node.val)
-            nodes_completed[node] = cloned_node
-            
-            for nei in node.neighbors:
-                current_node = nodes_completed.get(nei)
+            node_completed[node] = cloned_node
 
-                if not current_node:
+            for nei in node.neighbors:
+                curr_node = node_completed.get(nei)
+                if not curr_node:
                     cloned_node.neighbors.append(clone_helper(nei))
-                
+
                 else:
-                    cloned_node.neighbors.append(current_node)
+                    cloned_node.neighbors.append(curr_node)
             
             return cloned_node
         
         return clone_helper(node)
-    
+

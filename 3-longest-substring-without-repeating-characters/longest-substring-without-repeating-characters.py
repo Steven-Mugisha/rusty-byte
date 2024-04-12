@@ -1,18 +1,19 @@
 class Solution:
     def lengthOfLongestSubstring(self, s: str) -> int:
-        count = set()
-        ans = 0
-        curr_len = 0
+        seen = set()
+        currLength, res = 0, 0
         l = 0
 
         for r in range(len(s)):
-            curr_len += 1
-            while s[r] in count:
-                count.remove(s[l])
-                curr_len -= 1
+            currLength += 1
+            while s[r] in seen:
+                currLength =- 1
+                seen.remove(s[l])
                 l += 1
-
-            count.add(s[r])
-            ans = max(ans, len(count))
+                
+            print("seen here: ", seen)
+            seen.add(s[r])
+            res = max(res, len(seen))
         
-        return ans
+        return res
+            

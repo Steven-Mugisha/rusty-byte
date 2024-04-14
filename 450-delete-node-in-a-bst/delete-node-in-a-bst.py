@@ -11,10 +11,10 @@ class Solution:
         
         elif root.val > key:
             root.left = self.deleteNode(root.left, key)
-            
+        
         elif root.val < key:
             root.right = self.deleteNode(root.right, key)
-
+        
         else:
             if not root.left and not root.right:
                 return None
@@ -26,15 +26,15 @@ class Solution:
                 root = root.left
             
             else:
-                min_val = self.find_min(root.right)
-                root.val = min_val
-                root.right = self.deleteNode(root.right, min_val)
-        
+                sub_tree_min = self.find_min(root.right)
+                root.val = sub_tree_min
+                root.right = self.deleteNode(root.right, sub_tree_min)
         return root
     
-    def find_min(self, root):
-        while root.left:
-            root = root.left
-        return root.val
-    
-    
+    def find_min(self, node):
+        while node.left:
+            node = node.left
+        return node.val
+        
+
+        

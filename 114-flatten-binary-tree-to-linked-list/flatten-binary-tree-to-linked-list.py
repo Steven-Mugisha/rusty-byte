@@ -9,7 +9,6 @@ class Solution:
         """
         Do not return anything, modify root in-place instead.
         """
-
         if not root:
             return
         
@@ -18,7 +17,6 @@ class Solution:
         while current:
             if current.left:
                 last = current.left
-
                 while last.right:
                     last = last.right
                 
@@ -28,4 +26,3 @@ class Solution:
             current = current.right
         
         return root
-        

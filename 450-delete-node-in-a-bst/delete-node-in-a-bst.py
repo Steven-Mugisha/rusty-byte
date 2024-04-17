@@ -28,12 +28,9 @@ class Solution:
             else:
                 root.val = self.find_min(root.right)
                 root.right = self.deleteNode(root.right, root.val)
-            
         return root
     
     def find_min(self, node):
         while node.left:
             node = node.left
         return node.val
-    
-        

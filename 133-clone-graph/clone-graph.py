@@ -12,7 +12,7 @@ class Solution:
         nodes_completed = {}
 
         def cloneHelper(node):
-            if node is None:
+            if not node:
                 return None
             
             cloned_node = Node(node.val)
@@ -29,3 +29,6 @@ class Solution:
         
         return cloneHelper(node)
     
+
+
+

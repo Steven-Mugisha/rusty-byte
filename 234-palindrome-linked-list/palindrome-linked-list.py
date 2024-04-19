@@ -13,7 +13,7 @@ class Solution:
         while current_node:
             listArr.append(current_node.val)
             current_node = current_node.next
-        
+
         return listArr == listArr[::-1]
         
 

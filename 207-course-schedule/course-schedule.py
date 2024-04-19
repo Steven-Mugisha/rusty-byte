@@ -5,7 +5,6 @@ class Solution:
         for course, preq in prerequisites:
             courses[course].append(preq)
 
-        stack = [0]
         seen = set()
         visiting = set()
 

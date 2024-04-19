@@ -6,15 +6,51 @@
 class Solution:
     def isPalindrome(self, head: Optional[ListNode]) -> bool:
 
-        listArr = []
+        # if not head:
+        #     return True
 
-        current_node = head
+        fast = head
+        slow = head
 
-        while current_node:
-            listArr.append(current_node.val)
-            current_node = current_node.next
+        while fast is not None and fast.next is not None:
+            fast = fast.next.next  # None
+            slow = slow.next
+        
+        # reverse:
+        prev = None
+        while slow is not None:
+            curr = slow
+            slow = slow.next
+            curr.next = prev
+            prev = curr
+        
+        first = head
+        last = prev
 
-        return listArr == listArr[::-1]
+        while last:
+            if last.val != first.val:
+                return False
+            last = last.next
+            first = first.next
+
+        # while prev:
+        #     if prev.val != head.val:
+        #         return False
+
+        #     prev = prev.next
+        #     head = head.next
+        
+        return True
+
+
+
+
+        
+
+
+
+
+
         
 
 

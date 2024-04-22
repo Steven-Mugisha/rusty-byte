@@ -1,8 +1,8 @@
 class Solution:
     def numIslands(self, grid: List[List[str]]) -> int:
-        rows,cols = len(grid), len(grid[0])
+        rows, cols = len(grid), len(grid[0])
 
-        island, seen = 0, set()
+        seen, island = set(), 0
 
         def bfs(r,c):
             q = deque()
@@ -11,9 +11,10 @@ class Solution:
             while q:
                 row, col = q.popleft()
                 directions = [(1,0), (-1,0), (0,1), (0,-1)]
-                for dr,dc in directions:
-                    r, c = dr + row, dc + col
-                    if (r in range(rows) and c in range(cols) and grid[r][c] == '1' and (r,c) not in seen):
+
+                for dr, dc in directions:
+                    r,c = dr + row, dc + col
+                    if ( r in range(rows) and c in range(cols) and grid[r][c] == '1' and (r,c) not in seen):
                         seen.add((r,c))
                         q.append((r,c))
 
@@ -24,3 +25,5 @@ class Solution:
                     island += 1
         
         return island
+
+        

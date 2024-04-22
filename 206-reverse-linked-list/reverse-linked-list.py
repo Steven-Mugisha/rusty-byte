@@ -8,11 +8,11 @@ class Solution:
         if not head:
             return None
 
-        res = None
+        revHead = None
         while head:
             after = head.next
-            head.next = res
-            res = head
+            head.next = revHead
+            revHead = head
             head = after
         
-        return res
+        return revHead

@@ -1,28 +1,29 @@
 class Solution:
     def canFinish(self, numCourses: int, prerequisites: List[List[int]]) -> bool:
-        courses = collections.defaultdict(list)
+        courses = defaultdict(list)
 
-        for cr, preq in prerequisites:
-            courses[cr].append(preq)
+        for crs, preq in prerequisites:
+            courses[crs].append(preq)
         
-        visiting_edges, seen_vertex = set(), set()
-        
+        visiting, seen = set(), set()
+
         def has_cycle(course):
-            if course in visiting_edges:
+            if course in visiting:
                 return True
-
-            if course in seen_vertex:
+            
+            if course in seen:
                 return False
             
-            visiting_edges.add(course)
+            visiting.add(course)
             for preq in courses[course]:
                 if has_cycle(preq):
                     return True
-            visiting_edges.remove(course)
-            seen_vertex.add(course)
+            visiting.remove(course)
+            seen.add(course)
             return False
 
-        for cr in range(numCourses):
-            if has_cycle(cr):
+        for preq in range(numCourses):
+            if has_cycle(preq):
                 return False
+        
         return True

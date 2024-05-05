@@ -1,20 +1,21 @@
 class Solution:
     def isHappy(self, n: int) -> bool:
-        def sumSquare(number):
+        def squares(number):
             totalSum = 0
             while number > 0:
                 number, digit = divmod(number, 10)
                 totalSum += digit**2
             return totalSum
         
-        slowPointer = n
-        fastPointer = sumSquare(n)
+        slow = n
+        fast = squares(n)
 
-        while slowPointer != fastPointer and fastPointer != 1:
-            slowPointer = sumSquare(slowPointer)
-            fastPointer = sumSquare(sumSquare(fastPointer))
-        
-        if fastPointer == 1:
+        while fast != slow and fast != 1:
+            slow = squares(slow)
+            fast = squares(squares(fast))
+
+        if fast == 1:
             return True
         
         return False
+    

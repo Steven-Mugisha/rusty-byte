@@ -2,17 +2,17 @@ class Solution:
     def circularArrayLoop(self, nums: List[int]) -> bool:
         size = len(nums)
 
-        def nextStep(pointer, value, size):
+        def next_value(pointer, value, size):
             step = (pointer + value) % size
             if step < 0:
                 step += size
             return step
-
-        def isNotCycle(nums, PreDirection, pointer):
-            currentDirection = nums[pointer] >= 0
-            if (currentDirection != PreDirection) or (abs(nums[pointer]) % len(nums) == 0):
-                return True
             
+
+        def is_not_cycle(nums, prev_direction, pointer):
+            current_direction = nums[pointer] >= 0
+            if (current_direction != prev_direction) or (abs(nums[pointer]) % len(nums) == 0):
+                return True
             return False
 
         for i in range(size):
@@ -20,21 +20,19 @@ class Solution:
             forward = nums[i] > 0
 
             while (True):
-                slow = nextStep(slow, nums[slow], size)
-                if isNotCycle(nums, forward, slow):
+                slow = next_value(slow, nums[slow], size)
+                if is_not_cycle(nums, forward, slow):
                     break
                 
-                fast = nextStep(fast, nums[fast], size)
-                if isNotCycle(nums, forward, fast):
+                fast = next_value(fast, nums[fast], size)
+                if is_not_cycle(nums, forward, fast):
                     break
                 
-                fast = nextStep(fast, nums[fast], size)
-                if isNotCycle(nums, forward,fast):
-                        break
+                fast = next_value(fast, nums[fast], size)
+                if is_not_cycle(nums, forward, fast):
+                    break
                 
                 if slow == fast:
                     return True
         
         return False
-
-            

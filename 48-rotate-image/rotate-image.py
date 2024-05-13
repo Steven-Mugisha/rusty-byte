@@ -3,27 +3,22 @@ class Solution:
         """
         Do not return anything, modify matrix in-place instead.
         """
-        left, right = 0, len(matrix)-1
+        l, r = 0, len(matrix)-1
 
-        while left < right:
-            for i in range(right - left):
-                top, bottom = left, right
+        while l < r:
+            for i in range(r - l):
+                t, b = l, r
+                tl = matrix[t][l+i]
 
-                # topleft:
-                topLeft = matrix[top][left+i]
-
-                #topLeft:
-                matrix[top][left+i] = matrix[bottom-i][left]
-
-                # bottomleft:
-                matrix[bottom-i][left] = matrix[bottom][right-i]
-
-                # bottomright:
-                matrix[bottom][right-i] = matrix[top+i][right]
-
-                # topright:
-                matrix[top+i][right] = topLeft
+                # top left:
+                matrix[t][l+i] = matrix[b-i][l]
+                # bottom left:
+                matrix[b-i][l] = matrix[b][r-i]
+                # bottom right:
+                matrix[b][r-i] = matrix[t+i][r]
+                # top right
+                matrix[t+i][r] = tl
             
-            right -= 1
-            left += 1
+            r -= 1
+            l += 1
 

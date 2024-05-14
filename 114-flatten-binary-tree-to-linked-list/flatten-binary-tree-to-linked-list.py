@@ -10,17 +10,21 @@ class Solution:
         Do not return anything, modify root in-place instead.
         """
         if not root:
-            return
+            return None
         
-        current = root
-        while current:
-            if current.left:
-                last = current.left
+        current_node = root
+        
+        while current_node:
+            if current_node.left:
+                last = current_node.left
+
                 while last.right:
                     last = last.right
-                last.right = current.right
-                current.right = current.left
-                current.left = None
-            current = current.right
+                
+                last.right = current_node.right
+                current_node.right = current_node.left
+                current_node.left = None
+            
+            current_node = current_node.right
         
         return root

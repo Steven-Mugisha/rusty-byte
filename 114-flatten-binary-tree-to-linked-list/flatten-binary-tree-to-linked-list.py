@@ -12,19 +12,15 @@ class Solution:
         if not root:
             return None
         
-        current_node = root
-        
-        while current_node:
-            if current_node.left:
-                last = current_node.left
+        while root:
+            if root.left:
+                last = root.left
 
                 while last.right:
                     last = last.right
                 
-                last.right = current_node.right
-                current_node.right = current_node.left
-                current_node.left = None
+                last.right = root.right
+                root.right = root.left
+                root.left = None
             
-            current_node = current_node.right
-        
-        return root
+            root = root.right

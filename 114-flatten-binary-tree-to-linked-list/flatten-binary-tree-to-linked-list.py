@@ -10,7 +10,7 @@ class Solution:
         Do not return anything, modify root in-place instead.
         """
         if not root:
-            return None
+            return 
         
         while root:
             if root.left:
@@ -22,5 +22,6 @@ class Solution:
                 last.right = root.right
                 root.right = root.left
                 root.left = None
-            
+
             root = root.right
+        return root 

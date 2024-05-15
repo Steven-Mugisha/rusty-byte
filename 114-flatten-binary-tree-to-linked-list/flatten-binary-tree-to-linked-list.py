@@ -10,18 +10,19 @@ class Solution:
         Do not return anything, modify root in-place instead.
         """
         if not root:
-            return 
+            return None
         
-        while root:
-            if root.left:
-                last = root.left
+        current = root
 
+        while current:
+            if current.left:
+                last = current.left
                 while last.right:
                     last = last.right
-                
-                last.right = root.right
-                root.right = root.left
-                root.left = None
+                last.right = current.right
+                current.right = current.left
+                current.left = None
+            current = current.right
+        
+        return root
 
-            root = root.right
-        return root 

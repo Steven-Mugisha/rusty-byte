@@ -13,21 +13,18 @@ class Codec:
         :type root: TreeNode
         :rtype: str
         """
-        data = []
+        stream = []
+        def ser_rec(root):
+            if not root:
+                stream.append("N")
+                return 
+            stream.append(str(root.val))
+            ser_rec(root.left)
+            ser_rec(root.right)
 
-        def preOrderSer(node):
-            if not node:
-                data.append("N")
-                return
-            
-            data.append(str(node.val))
-            preOrderSer(node.left)
-            preOrderSer(node.right)
+        ser_rec(root)
+        return ",".join(stream)
         
-        preOrderSer(root)
-
-        return ",".join(data)
-
 
     def deserialize(self, data):
         """Decodes your encoded data to tree.
@@ -35,23 +32,25 @@ class Codec:
         :type data: str
         :rtype: TreeNode
         """
-        val = data.split(",")
+        stream = data.split(",")
         self.index = 0
 
-        def preOrderDer():
-            if val[self.index] == "N":
+        def des_rec():
+            if stream[self.index] == "N":
                 self.index += 1
                 return None
-
             
-            root = TreeNode(int(val[self.index]))
+            root = TreeNode(int(stream[self.index]))
             self.index += 1
-            root.left = preOrderDer()
-            root.right = preOrderDer()
-            return root
-        
-        return preOrderDer()
+            root.left = des_rec()
+            root.right = des_rec()
 
+            return root
+
+        root = des_rec()
+
+        return root
+        
 # Your Codec object will be instantiated and called as such:
 # ser = Codec()
 # deser = Codec()

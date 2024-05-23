@@ -6,22 +6,19 @@
 #         self.right = right
 class Solution:
     def diameterOfBinaryTree(self, root: Optional[TreeNode]) -> int:
-        
-        def dfs(node, dm):
-            if not node:
+        def dm_helper(root, dm):
+            if root is None:
                 return 0, dm
             
             else:
-                lh, dm = dfs(node.left, dm)
-                rh, dm = dfs(node.right, dm)
+                lh, dm = dm_helper(root.left, dm)
+                rh, dm = dm_helper(root.right, dm)
 
-                dm = max(dm, lh + rh)
+                dm = max(dm, lh+rh)
 
                 return max(lh, rh) + 1, dm
         
         diameter = 0
-        _, diameter = dfs(root, diameter)
-
+        _, diameter = dm_helper(root, diameter)
+        
         return diameter
-
-    

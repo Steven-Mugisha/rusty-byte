@@ -10,18 +10,18 @@ class Solution:
             if not root:
                 return 0
             
-            leftTreeSum = maxPathSum_rec(root.left)
-            rightTreeSum = maxPathSum_rec(root.right)
+            rootleftTree = maxPathSum_rec(root.left)
+            rootrightTree = maxPathSum_rec(root.right)
 
             left, right = 0, 0
 
-            if leftTreeSum > 0: left = leftTreeSum
-            if rightTreeSum > 0: right = rightTreeSum
+            if rootleftTree > 0: left = rootleftTree
+            if rootrightTree > 0: right = rootrightTree
 
-            currentPathSum = root.val + left + right
+            valPathsum = root.val + left + right
 
             maxSum = maxPathSum_rec.maxSum
-            maxPathSum_rec.maxSum = max(maxSum, currentPathSum)
+            maxPathSum_rec.maxSum = max(maxSum, valPathsum)
 
             return root.val + max(left, right)
 

@@ -14,10 +14,18 @@ class Solution:
 
 
     def dfs(self, root, r_side, level):
+
+        if not root: return None
+
         if level == len(r_side):
             r_side.append(root.val)
         
-        for child in [root.right, root.left]:
-            if child:
-                self.dfs(child, r_side, level + 1)
+        self.dfs(root.right, r_side, level + 1)
+        self.dfs(root.left, r_side, level + 1)
+        
+        
+
+        # for child in [root.right, root.left]:
+        #     if child:
+        #         self.dfs(child, r_side, level + 1)
         

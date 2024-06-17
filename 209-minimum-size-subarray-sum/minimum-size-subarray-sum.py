@@ -1,9 +1,7 @@
-import sys
 class Solution:
     def minSubArrayLen(self, target: int, nums: List[int]) -> int:
-        ans = sys.maxsize
+        l,ans = 0, math.inf
         curr_sum = 0
-        l = 0
 
         for r in range(len(nums)):
             curr_sum += nums[r]
@@ -11,7 +9,4 @@ class Solution:
                 ans = min(ans, r - l +1)
                 curr_sum -= nums[l]
                 l += 1
-             
-        return ans if ans != sys.maxsize else 0
-
-
+        return ans if ans != math.inf else 0

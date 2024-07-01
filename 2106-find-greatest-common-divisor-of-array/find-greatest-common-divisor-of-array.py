@@ -1,15 +1,21 @@
 class Solution:
     def findGCD(self, nums: List[int]) -> int:
-
-        min_val, max_val = nums[0], nums[0]
-
-        for i in range(1, len(nums)):
-            if nums[i] > max_val:
-                max_val = nums[i]
+        def dfs(min_val, max_val):
+            if min_val == max_val:
+                return min_val
             
-            if nums[i] < min_val:
-                min_val = nums[i]
-    
-        return gcd(min_val, max_val)
+            elif min_val > max_val:
+                return dfs(min_val - max_val, max_val)
+            
+            else:
+                return dfs(min_val, max_val-min_val)
+        
+        min_val, max_val = min(nums), max(nums)
+
+        return dfs(min_val, max_val)
+
+
+
+
     
             

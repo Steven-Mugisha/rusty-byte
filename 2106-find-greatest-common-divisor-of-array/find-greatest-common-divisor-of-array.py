@@ -1,17 +1,16 @@
 class Solution:
     def findGCD(self, nums: List[int]) -> int:
-        # BaseCase: When equal return any number (max or min)
-        # RecursiveCase: When either max or min is higher reduce it until it reaches the BaseCase.
+        return self.gcdHelper(min(nums), max(nums))
+    
 
-        def gcdHelper(minVal, maxVal):
-            if minVal == maxVal:
-                return minVal
-            
-            else:
-                if minVal < maxVal:
-                    return gcdHelper(minVal, maxVal - minVal)
-                
-                else:
-                    return gcdHelper(minVal - maxVal, minVal)
+    def gcdHelper(self, minValue, maxValue):
+        if minValue == maxValue:
+            return maxValue
         
-        return gcdHelper(min(nums), max(nums))
+        else:
+            if maxValue > minValue:
+                return self.gcdHelper(minValue, maxValue - minValue)
+            
+            return self.gcdHelper(minValue - maxValue, maxValue)
+    
+        

@@ -1,16 +1,11 @@
 class Solution:
     def findGCD(self, nums: List[int]) -> int:
-        return self.gcdHelper(min(nums), max(nums))
-    
-
-    def gcdHelper(self, minValue, maxValue):
-        if minValue == maxValue:
-            return maxValue
+        mn, mx = min(nums), max(nums)
         
-        else:
-            if maxValue > minValue:
-                return self.gcdHelper(minValue, maxValue - minValue)
-            
-            return self.gcdHelper(minValue - maxValue, maxValue)
-    
+        ans = 1
+        for i in range(1, mn + 1):
+            if mn % i == 0 and mx % i == 0:
+                ans = i
+        
+        return ans
         

@@ -1,5 +1,5 @@
 class TrieNode:
-    def __init__(self):
+    def __init__(self, ch = ''):
         self.children = [None]*26
         self.end = False
 

@@ -1,21 +1,24 @@
 class Solution:
-    def findRestaurant(self, list1: List[str], list2: List[str]) -> List[str]:      
+    def findRestaurant(self, list1: List[str], list2: List[str]) -> List[str]:
         map = {}
-        minVal = float('inf')
-        res = []
 
-        for idx, string in enumerate(list1):
-            map[string] = idx
-        
-        for idx, string in enumerate(list2):
+        for index, string in enumerate(list1):  # O(list1)
+            map[string] = index
+
+        min_index = float('inf')
+        result = []
+
+        for index, string in enumerate(list2): # O(list2) 
             if string in map:
-                totalIdx = idx + map[string]
-
-                if totalIdx < minVal:
-                    minVal = totalIdx
-                    res = [string]
+                temp_index = index + map[string]
+                if temp_index < min_index:
+                    min_index = temp_index
+                    result = [string]
                 
-                elif totalIdx == minVal:
-                    res.append(string)
+                elif temp_index == min_index:
+                    result.append(string)
         
-        return res
+        return result
+
+
+

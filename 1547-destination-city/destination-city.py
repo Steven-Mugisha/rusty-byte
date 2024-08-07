@@ -1,17 +1,11 @@
 class Solution:
     def destCity(self, paths: List[List[str]]) -> str:
-        out = set()
+        out_paths, in_paths = set(), set()
 
         for start, end in paths:
-            out.add(start)
+            out_paths.add(start)
+            in_paths.add(end)
         
-        
-        for start, end in paths:
-            if end not in out:
+        for end in in_paths:
+            if end not in out_paths:
                 return end
-        
-        
-
-            
-
-

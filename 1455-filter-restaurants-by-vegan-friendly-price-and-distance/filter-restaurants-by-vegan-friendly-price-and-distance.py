@@ -1,17 +1,19 @@
 class Solution:
     def filterRestaurants(self, restaurants: List[List[int]], veganFriendly: int, maxPrice: int, maxDistance: int) -> List[int]:
         ratings = []
-
-        for resto in restaurants:
-            if resto[3] <= maxPrice and resto[4] <= maxDistance:
-                if veganFriendly == 0 or resto[2] == veganFriendly:
-                    ratings.append((resto[1], resto[0]))
+        for r in restaurants:
+            if r[3] <= maxPrice and r[4] <= maxDistance:
+                if veganFriendly == 0 or r[2] == veganFriendly:
+                    ratings.append([r[1], r[0]])
         
         ratings.sort()
 
-        ans = []
+        res = []
 
         for rate, id in ratings:
-            ans.append(id)
+            res.append(id)
         
-        return ans[::-1]
+        return res[::-1]
+                    
+
+                    

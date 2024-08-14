@@ -1,24 +1,25 @@
 class Solution:
     def findRestaurant(self, list1: List[str], list2: List[str]) -> List[str]:
-        map = {}
+        common_strings = []
+        lookUp = {}
 
-        for index, string in enumerate(list1):  # O(list1)
-            map[string] = index
-
-        min_index = float('inf')
-        result = []
-
-        for index, string in enumerate(list2): # O(list2) 
-            if string in map:
-                temp_index = index + map[string]
-                if temp_index < min_index:
-                    min_index = temp_index
-                    result = [string]
-                
-                elif temp_index == min_index:
-                    result.append(string)
+        for index, resto in enumerate(list1):
+            lookUp[resto] = index
         
-        return result
+        minIndex = float('inf')
+
+        for index, resto in enumerate(list2):
+            if resto in lookUp:
+                currIndexSum = index + lookUp[resto]
+                if currIndexSum < minIndex:
+                    minIndex = currIndexSum
+                    common_strings = [resto]
+                    
+                elif currIndexSum == minIndex:
+                    common_strings.append(resto)
+                
+        return common_strings
 
 
 
+        

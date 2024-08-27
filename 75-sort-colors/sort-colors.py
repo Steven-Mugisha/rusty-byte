@@ -4,19 +4,19 @@ class Solution:
         Do not return anything, modify nums in-place instead.
         """
 
-        start, current, end = 0, 0, len(nums) - 1
+        curr, l, r = 0,0, len(nums) - 1
 
         for _ in range(len(nums)):
-            if nums[current] == 0:
-                nums[current], nums[start] = nums[start], nums[current]
-                current += 1
-                start += 1
+            if nums[curr] == 0:
+                nums[curr], nums[l] = nums[l], nums[curr]
+                curr += 1
+                l += 1
             
-            elif nums[current] == 1:
-                current += 1
+            elif nums[curr] == 1:
+                curr += 1
             
             else:
-                nums[current], nums[end] = nums[end], nums[current]
-                end -= 1
+                nums[curr], nums[r] = nums[r], nums[curr]
+                r -= 1
         
         return nums

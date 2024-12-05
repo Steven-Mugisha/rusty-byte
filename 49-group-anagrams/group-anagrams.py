@@ -11,6 +11,4 @@ class Solution:
                 count[index] += 1
             groups[tuple(count)].append(s)
         
-        print(f'output {groups.values()}')
-        
         return list(groups.values())

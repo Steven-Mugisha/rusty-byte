@@ -1,13 +1,17 @@
 class Solution:
     def destCity(self, paths: List[List[str]]) -> str:
+        from collections import defaultdict
 
-        out_going,in_coming = set(), set()
-
-        for start, dest in paths:
-            out_going.add(start)
-            in_coming.add(dest)
-    
-        for city in in_coming:
-            if city not in out_going:
-                return city
+        # outbounds = defaultdict()
+        # inbounds = defaultdict()
+        outbounds, inbounds = set(), set()
         
+
+        for idx, path in enumerate(paths):
+            start, dest = path
+            outbounds.add(start)
+            inbounds.add(dest)
+        
+        for city in inbounds:
+            if city not in outbounds:
+                return city

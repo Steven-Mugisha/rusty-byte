@@ -1,17 +1,14 @@
 class Solution:
     def destCity(self, paths: List[List[str]]) -> str:
-        from collections import defaultdict
 
-        # outbounds = defaultdict()
-        # inbounds = defaultdict()
-        outbounds, inbounds = set(), set()
-        
+        indegree = set()
+        outdegree = set()
 
-        for idx, path in enumerate(paths):
-            start, dest = path
-            outbounds.add(start)
-            inbounds.add(dest)
+        for start, end in paths:
+            outdegree.add(start)
+            indegree.add(end)
         
-        for city in inbounds:
-            if city not in outbounds:
-                return city
+        for i in indegree:
+            if i not in outdegree:
+                return i
+            

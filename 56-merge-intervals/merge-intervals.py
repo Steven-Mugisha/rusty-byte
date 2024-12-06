@@ -6,13 +6,18 @@ class Solution:
         res = [intervals[0]]
 
         for i in range(1, len(intervals)):
-            last_start, last_end = res[-1][0], res[-1][1]
-            curr_start, curr_end = intervals[i][0], intervals[i][1]
+            last_range = res[-1]
+            current_range = intervals[i]
 
-            if curr_start <= last_end:
-                res[-1] = [last_start, max(last_end, curr_end)]
+            if current_range[0] <= last_range[1]:
+                res[-1] = [last_range[0], max(current_range[1], last_range[1])]
             
             else:
-                res.append([curr_start, curr_end])
+                res.append(intervals[i])
+
         
-        return res
+        return res 
+
+
+
+

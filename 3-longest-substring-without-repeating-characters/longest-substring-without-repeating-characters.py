@@ -10,4 +10,5 @@ class Solution:
                 l += 1
             look_up.add(s[r])
             max_count = max(max_count, r - l + 1)
+        
         return max_count

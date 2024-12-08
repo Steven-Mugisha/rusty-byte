@@ -6,12 +6,14 @@ class Solution:
         for resto in restaurants:
             if resto[3] <= maxPrice and resto[4] <= maxDistance:
                 if veganFriendly == 0 or resto[2] == veganFriendly:
-                    ratings.append((resto[1], resto[0]))
+                    ratings.append([resto[1], resto[0]])
         
+        # crucial part 
         ratings.sort()
         ans = [id for rate, id in ratings]
 
         return ans[::-1]
+
 
 
         

@@ -11,7 +11,7 @@ class Solution:
         
         res = []
 
-        for i in range(k):
+        for _ in range(k):
             res.append(heapq.heappop(heap)[1])
         
         return res

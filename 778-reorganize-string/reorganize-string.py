@@ -1,30 +1,30 @@
 class Solution:
-    from collections import Counter
-    import heapq
     def reorganizeString(self, s: str) -> str:
-        counter = Counter(s)
-        maxHeap = []
+        from collections import Counter
+        import heapq
 
-        for char, count in counter.items():
-            maxHeap.append([-count, char])
-            heapq.heapify(maxHeap)
+        freqs = Counter(s)
+        heap = []
 
-        prev = None
-        res = ""
-
-        while len(maxHeap) > 0 or prev:
-            if len(maxHeap) == 0 and prev:
+        for char, fq in freqs.items():
+            heapq.heappush(heap, [-fq, char])
+        
+        previous = None
+        result = ""
+        while len(heap) > 0 or previous:
+            if len(heap) == 0 and previous:
                 return ""
             
-            count, char = heapq.heappop(maxHeap)
-            res+= char
+            count, char = heapq.heappop(heap)
             count += 1
 
-            if prev:
-                heapq.heappush(maxHeap, prev)
-                prev = None
+            result += char
+
+            if previous:
+                heapq.heappush(heap, previous)
+                previous = None
             
             if count != 0:
-                prev = [count, char]
+                previous = [count, char]
         
-        return res
+        return result

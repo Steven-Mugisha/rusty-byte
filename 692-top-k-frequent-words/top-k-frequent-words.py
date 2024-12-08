@@ -1,14 +1,17 @@
 class Solution:
     def topKFrequent(self, words: List[str], k: int) -> List[str]:
-        freq = Counter(words)
+        from collections import Counter
+        import heapq
 
-        heap, ans = [], []
+        freqs = Counter(words)
+        heap = []
 
-        for word, count in freq.items():
-            heappush(heap, (-count, word))
+        for word, fq in freqs.items():
+            heapq.heappush(heap, [-fq, word])
         
+        res = []
+
         for i in range(k):
-            top_freq_word = heappop(heap)
-            ans.append(top_freq_word[1])
+            res.append(heapq.heappop(heap)[1])
         
-        return ans
+        return res

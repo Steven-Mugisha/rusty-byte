@@ -9,6 +9,11 @@ class Solution:
                     ratings.append((resto[1], resto[0]))
         
         ratings.sort()
-        # sorted(ratings, key=lambda x: x[0])
         ans = [id for rate, id in ratings]
+
         return ans[::-1]
+
+
+        
+
+                

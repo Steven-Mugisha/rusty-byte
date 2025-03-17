@@ -19,7 +19,7 @@ class Solution:
                         q.append((R,C))
         for r in range(ROWS):
             for c in range(COLS):
-                if r in range(ROWS) and c in range(COLS) and (r, c) not in visited and grid[r][c] == "1":
+                if ((r, c) not in visited and grid[r][c] == "1"):
                     bfs(r,c)
                     island += 1
         

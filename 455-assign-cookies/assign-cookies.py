@@ -2,19 +2,15 @@ class Solution:
     def findContentChildren(self, g: List[int], s: List[int]) -> int:
         
         g.sort(), s.sort()
-
-        i, j = 0, 0
-
+        content_child, cookie_index = 0, 0
         ans = 0
 
-        while i < len(g):
-            while j < len(s):
-                if s[j] >= g[i]:
-                    ans += 1
-                    j += 1
-                    break
-                    # j += 1
-                j += 1
-            i += 1
-        
-        return ans
+        while content_child < len(g) and cookie_index < len(s):
+            if s[cookie_index] >= g[content_child]:
+                content_child += 1
+            cookie_index += 1
+        return content_child
+    
+            
+
+

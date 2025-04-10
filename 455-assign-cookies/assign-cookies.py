@@ -13,7 +13,7 @@ class Solution:
                     ans += 1
                     j += 1
                     break
-                    j += 1
+                    # j += 1
                 j += 1
             i += 1
         

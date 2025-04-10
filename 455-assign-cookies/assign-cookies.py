@@ -13,7 +13,6 @@ class Solution:
                     ans += 1
                     j += 1
                     break
-                # elif s[j] < g[i]:
                     j += 1
                 j += 1
             i += 1

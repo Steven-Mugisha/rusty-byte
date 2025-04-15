@@ -4,18 +4,26 @@ class Solution:
         Do not return anything, modify matrix in-place instead.
         """
 
+        size = len(matrix)
 
-        left, right = 0, len(matrix) - 1
+        # swap from top to bottom or the matrix
 
-        while left < right:
-            for i in range(right - left):
-                top, bottom = left, right
-                topLeft = matrix[top][left + i]
-                matrix[top][left + i] = matrix[bottom - i][left]
-                matrix[bottom - i][left] = matrix[bottom][right  - i]
-                matrix[bottom][right  - i] = matrix[top + i][right]
-                matrix[top + i][right] = topLeft
-            
-            right -= 1
-            left += 1
+        for r in range(size >> 1):
+            for c in range(size):
+                matrix[r][c], matrix[size - r - 1][c] = matrix[size - r - 1][c], matrix[r][c]
+
+        
+        for r in range(size):
+            for c in range(r):
+                matrix[r][c], matrix[c][r] = matrix[c][r], matrix[r][c]
+
+                
+        
+        
+        
+        
+        
+        
+        
+        
         
